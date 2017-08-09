@@ -1,35 +1,44 @@
 <form [formGroup]="rform" (ngSubmit)="save(rform)">
-    <div class="container">
+    <div class="container mt-5">
         <div class="form-group">
-            <h1>Create a post</h1>
+            <h1 style="text-align:center">Create a guide</h1>
 
-            <label>Title</label>
+            <label class="mt-4">Title</label>
             <input type="text" class="form-control" formControlName="title">
 
-            <label>Description</label>
-            <textarea type="text" class="form-control" formControlName="description"></textarea>
+            <label class="mt-4">Description</label>
+            <textarea id="description" type="text" class="form-control" formControlName="description"></textarea>
 
-            <label>Required prerequisite knowledge</label>
-            <textarea type="text" class="form-control" formControlName="prereqs"></textarea>
+            <label class="mt-4">Required prerequisite knowledge</label>
+            <textarea id="prereqs" type="text" class="form-control" formControlName="prereqs"></textarea>
+
+            <label class="mt-4">What should their experience level be before starting this guide? (Beginner, Intermediate, Advanced)</label>
+            <select class="form-control" formControlName="experienceLevel">
+              <option value="Beginner">Beginner</option>
+              <option value="Intermediate">Intermediate</option>
+              <option value="Advanced">Advanced</option>
+            </select>
 
             <div formArrayName="guideResources">
                 <div *ngFor="let resource of rform.controls.guideResources.controls; let i=index">
-                    <div>
+                    <div class="mt-5">
                         <span>Resource #{{i+1}}</span>
-                        <span *ngIf="rform.controls.guideResources.controls.length > 1" (click)="removeGuideResource(i)"> Delete</span>
+                        <span class=""><button class="btn btn-danger btn-sm" (click)="removeGuideResource(i)">Delete Resource</button></span>
                     </div>
                     <div [formGroupName]="i">
                         <app-guide-resource [guideResourceForm]=rform.controls.guideResources.controls[i]></app-guide-resource>
                     </div>
                 </div>
 
-
+                <div class="mt-3 mb-5">
+                    <button class="btn btn-primary" (click)="addGuideResource()">Add Resource</button>
+                </div>
 
             </div>
 
         </div>
 
-        <button type="submit" class="btn btn-success form-control" [disabled]="!rform.valid">Submit Guide</button>
+        <button type="submit" class="btn btn-success form-control mb-5" [disabled]="!rform.valid">Submit Guide</button>
 
     </div>
 

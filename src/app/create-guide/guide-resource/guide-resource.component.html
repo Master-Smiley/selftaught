@@ -1,31 +1,35 @@
 <div [formGroup]="guideResourceForm">
-    <div class="form-group col-xs-6">
-        <label>Name of Resource</label>
-        <input type="text" class="form-control" formControlName="resourceTitle">
-        <!-- <small [hidden]="guideResourceForm.controls.resourceTitle.valid" class="text-danger">
+    <div class="card">
+        <div class="card-block">
+            <div class="form-group col-xs-6">
+                <label>Name of Resource</label>
+                <input type="text" class="form-control" formControlName="resourceTitle">
+                <!-- <small [hidden]="guideResourceForm.controls.resourceTitle.valid" class="text-danger">
             Name of Resource is not valid
         </small> -->
-    </div>
+            </div>
 
-    <div class="form-group col-xs-6">
-        <label>Where is this found? (URL only)</label>
-        <input type="url" class="form-control" formControlName="resourceLink">
-    </div>
+            <div class="form-group col-xs-6 mt-3">
+                <label>Where is this found? (URL only)</label>
+                <input type="url" class="form-control" formControlName="resourceLink">
+            </div>
 
-    <div class="form-group col-xs-6">
-        <label>How long does it take to complete?</label>
-        <input type="number" class="form-control" formControlName="resourceTime">
-        <!-- <small [hidden]="guideResourceForm.controls.resourceTime.valid" class="text-danger"> 
+            <div class="form-group col-xs-6 mt-3">
+                <label>How long does it take to complete? (in hours)</label>
+                <input type="number" class="form-control" formControlName="resourceTime">
+                <!-- <small [hidden]="guideResourceForm.controls.resourceTime.valid" class="text-danger"> 
             Resource Time is not valid
         </small> -->
-    </div>
+            </div>
 
-    <div class="form-group col-xs-6">
-        <label>Resource Content</label>
-        <input type="text" class="form-control" formControlName="resourceContent">
-        <!-- <small [hidden]="guideResourceForm.controls.resourceContent.valid" class="text-danger"> 
+            <div class="form-group col-xs-6 mt-3">
+                <label>Resource Content (include everything you wish you knew when you started! Including common mistakes, sections to skip, etc.)</label>
+                <input id="content" type="text" class="form-control" formControlName="resourceContent">
+                <!-- <small [hidden]="guideResourceForm.controls.resourceContent.valid" class="text-danger"> 
             Name of Resource is not valid
         </small> -->
+            </div>
+        </div>
     </div>
 
 </div>

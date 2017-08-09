@@ -22,9 +22,10 @@ export class CreateGuideComponent implements OnInit {
 
   ngOnInit() {
     this.rform = this.fb.group({
-      title : ['', Validators.compose([Validators.required, Validators.maxLength(60)])],
-      description : ['', Validators.compose([Validators.required, Validators.minLength(100)])],
-      prereqs: ['', Validators.compose([Validators.required, Validators.minLength(100)])],
+      title : ['', Validators.compose([Validators.required])],
+      description : ['', Validators.compose([Validators.required])],
+      prereqs: ['', Validators.compose([Validators.required])],
+      experienceLevel: ['', Validators.required],
       guideResources: this.fb.array([
         this.initGuideResource()
       ])
@@ -34,10 +35,10 @@ export class CreateGuideComponent implements OnInit {
 
     initGuideResource() {
       return this.fb.group({
-        resourceTitle: [null, Validators.compose([Validators.required, Validators.maxLength(60)])],
-        resourceLink: [null, Validators.compose([Validators.required, Validators.maxLength(60)])],
+        resourceTitle: [null, Validators.compose([Validators.required])],
+        resourceLink: [null, Validators.compose([Validators.required])],
         resourceTime: [null, Validators.compose([Validators.required])],
-        resourceContent: [null, Validators.compose([Validators.required, Validators.minLength(100)])]
+        resourceContent: [null, Validators.compose([Validators.required])]
       });
     }
 
