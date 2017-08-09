@@ -1,0 +1,29 @@
+<nav class="navbar bg-inverse navbar-inverse navbar-toggleable-sm">
+    <div class="container">
+        <ul class="nav navbar-nav mr-auto">
+            <li class="navbar-item">
+                <a class="navbar-brand" [routerLink]="['/']">SelfTaught</a>
+            </li>
+
+            <li class="navbar-item">
+                <a class="nav-link" href="#">About Us</a>
+            </li>
+        </ul>
+
+        <ul class="nav navbar-nav">
+            <li class="navbar-item" routerLinkActive="active">
+                <a role="button" class="btn btn-primary mr-1" [routerLink]="['/create']">Submit a Guide</a>
+            </li>
+
+            <li class="navbar-item">
+                <button type="button" class="btn btn-outline-secondary mr-1">Log In</button>
+            </li>
+
+            <li class="navbar-item">
+                <button type="button" class="btn btn-outline-secondary">Sign Up</button>
+            </li>
+        </ul>
+
+    </div>
+    <!-- container -->
+</nav>

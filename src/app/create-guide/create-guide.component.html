@@ -1,0 +1,37 @@
+<form [formGroup]="rform" (ngSubmit)="save(rform)">
+    <div class="container">
+        <div class="form-group">
+            <h1>Create a post</h1>
+
+            <label>Title</label>
+            <input type="text" class="form-control" formControlName="title">
+
+            <label>Description</label>
+            <textarea type="text" class="form-control" formControlName="description"></textarea>
+
+            <label>Required prerequisite knowledge</label>
+            <textarea type="text" class="form-control" formControlName="prereqs"></textarea>
+
+            <div formArrayName="guideResources">
+                <div *ngFor="let resource of rform.controls.guideResources.controls; let i=index">
+                    <div>
+                        <span>Resource #{{i+1}}</span>
+                        <span *ngIf="rform.controls.guideResources.controls.length > 1" (click)="removeGuideResource(i)"> Delete</span>
+                    </div>
+                    <div [formGroupName]="i">
+                        <app-guide-resource [guideResourceForm]=rform.controls.guideResources.controls[i]></app-guide-resource>
+                    </div>
+                </div>
+
+
+
+            </div>
+
+        </div>
+
+        <button type="submit" class="btn btn-success form-control" [disabled]="!rform.valid">Submit Guide</button>
+
+    </div>
+
+
+</form>
