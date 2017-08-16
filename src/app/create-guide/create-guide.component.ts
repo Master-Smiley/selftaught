@@ -1,6 +1,11 @@
+import { GuideService } from '../guide/guide.service';
 import { Component, OnInit } from '@angular/core';
 import { Guide } from '../guide/guide.model';
-import { FormBuilder, FormGroup, Validators, FormArray, ReactiveFormsModule } from '@angular/forms';
+import { Form, FormArray, FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { User } from '../auth/user.model';
+import { GuideResource } from '../create-guide/guide-resource/guide-resource.model';
+import { Observable } from 'rxjs/Rx';
+
 
 @Component({
   selector: 'app-create-guide',
@@ -11,36 +16,36 @@ export class CreateGuideComponent implements OnInit {
 
   rform: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, public guideService: GuideService) {
   }
 
 
 
-  save(model: Guide) {
-    console.log(model);
+  save(model: FormGroup) {
+    const newGuide = new Guide(
+      model.value.title,
+      model.value.description,
+      model.value.prereqs,
+      model.value.experienceLevel,
+      model.value.guideResources,
+      new User('User', 'Meme team', 'user@gmail.com', 'guide')
+    );
+    this.guideService.addGuide(newGuide)
+      .subscribe(
+        data => console.log(data),
+        error => console.error(error)
+      );
+
   }
 
-  ngOnInit() {
-    this.rform = this.fb.group({
-      title : ['', Validators.compose([Validators.required])],
-      description : ['', Validators.compose([Validators.required])],
-      prereqs: ['', Validators.compose([Validators.required])],
-      experienceLevel: ['', Validators.required],
-      guideResources: this.fb.array([
-        this.initGuideResource()
-      ])
-
-    });
-  }
-
-    initGuideResource() {
+  initGuideResource() {
       return this.fb.group({
         resourceTitle: [null, Validators.compose([Validators.required])],
         resourceLink: [null, Validators.compose([Validators.required])],
         resourceTime: [null, Validators.compose([Validators.required])],
         resourceContent: [null, Validators.compose([Validators.required])]
       });
-    }
+  }
 
     addGuideResource() {
       // add guide to the list
@@ -53,6 +58,20 @@ export class CreateGuideComponent implements OnInit {
       const control = <FormArray>this.rform.controls['guideResources'];
       control.removeAt(i);
   }
+
+  ngOnInit() {
+    this.rform = this.fb.group({
+      title : [null, Validators.compose([Validators.required])],
+      description : [null, Validators.compose([Validators.required])],
+      prereqs: [null, Validators.compose([Validators.required])],
+      experienceLevel: [null, Validators.required],
+      guideResources: this.fb.array([
+        this.initGuideResource()
+      ])
+
+    });
+  }
+
 
 
 }

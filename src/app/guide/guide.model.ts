@@ -1,28 +1,21 @@
+
+
 export class Guide {
     title: string;
     description: string;
     prereqs: string;
-    resourceTitles: string[];
-    resourceLinks: string[];
-    resourceTime: number[];
-    resourceContent: string[];
-    username?: string;
-    messageId?: string;
-    userId?: string;
+    experience: string;
+    guideResources: any;
+    user: string;
 
-    constructor(title: string, description: string, prereqs: string, resourceTitles: string[],
-        resourceLinks: string[], resourceTime: number[], resourceContent: string[],
-        username: string, messageId: string, userId: string) {
+    constructor(title: string, description: string, prereqs: string, experience: string, guideResources: any,
+        user: any) {
 
         this.title = title;
         this.description = description;
         this.prereqs = prereqs;
-        this.resourceTitles = resourceTitles;
-        this.resourceLinks = resourceLinks;
-        this.resourceTime = resourceTime;
-        this.resourceContent = resourceContent;
-        this.username = username;
-        this.messageId = messageId;
-        this.userId = userId;
+        this.experience = experience;
+        this.guideResources = guideResources;
+        this.user = user;
     }
 }
