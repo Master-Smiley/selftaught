@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, Response } from '@angular/http';
 import 'rxjs/Rx';
-import { Observable } from 'rxjs';
-
+import { Observable } from 'rxjs/Observable';
 import { User } from './user.model';
+import { jwt } from 'jsonwebtoken';
 
 
 @Injectable()
@@ -30,4 +30,17 @@ export class AuthService {
                 return Observable.throw(error.json());
             });
     }
+
+    logout() {
+        localStorage.clear();
+    }
+
+    isLoggedIn() {
+        return localStorage.getItem('token') !== null;
+    }
+
+    // getUsername() {
+    //     const decoded = jwt.decode(localStorage.getItem('token'));
+    //     return decoded.user.username;
+    // }
 }

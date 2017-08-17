@@ -1,4 +1,6 @@
+import { AuthService } from '../auth/auth.service';
 import { Component, OnInit } from '@angular/core';
+import { jwt } from 'jsonwebtoken';
 
 @Component({
   selector: 'app-navbar',
@@ -7,9 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() { }
+  constructor(private authService: AuthService) {}
+
+  isLoggedIn() {
+    return this.authService.isLoggedIn();
+  }
+
+  logout() {
+    return this.authService.logout();
+  }
 
   ngOnInit() {
   }
 
+  // findUsername() {
+  //   return ;
+  // }
 }

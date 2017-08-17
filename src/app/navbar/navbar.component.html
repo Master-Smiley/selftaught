@@ -16,12 +16,22 @@
             </li>
 
             <li class="navbar-item">
-                <button type="button" class="btn btn-outline-secondary mr-1" [routerLink]="['/user/login']">Log In</button>
+                <button type="button" class="btn btn-outline-secondary mr-1" *ngIf="!isLoggedIn()" [routerLink]="['/user/login']">Log In</button>
             </li>
 
             <li class="navbar-item">
-                <button type="button" class="btn btn-outline-secondary" [routerLink]="['/user/signup']">Sign Up</button>
+                <button type="button" class="btn btn-outline-secondary mr-1" *ngIf="!isLoggedIn()" [routerLink]="['/user/signup']">Sign Up</button>
             </li>
+
+
+            <li class="navbar-item">
+                <button type="button" class="btn btn-outline-secondary mr-1" *ngIf="isLoggedIn()" (click)="logout()">Log Out</button>
+            </li>
+
+            <li class="navbar-item">
+                <span class="navbar-text" *ngIf="isLoggedIn()">Welcome!</span>
+            </li>
+
         </ul>
 
     </div>

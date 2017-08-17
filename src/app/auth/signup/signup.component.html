@@ -1,6 +1,6 @@
 <div class="container mt-5">
     <div class="col-md-4 mx-auto">
-        <form [formGroup]="signupForm" (ngSubmit)="onSignup()">
+        <form [formGroup]="signupForm" (ngSubmit)="onSignup()" novalidate>
 
             <div class="form-group">
                 <label for="username">choose username:</label>
@@ -20,10 +20,10 @@
 
             <div class="form-group">
                 <label for="password">Re-enter Password:</label>
-                <input type="password" id="re-password" class="form-control" formControlName="re_password">
+                <input type="password" id="password" class="form-control" formControlName="re_password">
             </div>
 
-            <button type="submit" class="btn btn-block btn-primary" [disabled]="!signupForm.valid">Sign Up</button>
+            <button type="submit" value="submit" class="btn btn-block btn-primary" [disabled]="!signupForm.valid">Sign Up</button>
 
         </form>
 

@@ -12,6 +12,7 @@ const user = require('./server/routes/user');
 const create = require('./server/routes/create');
 
 const app = express();
+mongoose.Promise = global.Promise;
 mongoose.connect('localhost:27017/selftaught');
 
 // Parsers for POST data
