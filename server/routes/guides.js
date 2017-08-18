@@ -13,9 +13,9 @@ router.post('/create', function(req, res, next) {
         guideResources: req.body.guideResources,
         dateCreated: Date.now(),
         user: new User({
-            username: "Garrett",
+            username: "User",
             password: "SupaSecret",
-            email: "garrettsmiley@msn.com"
+            email: "email@email.com"
         })
     });
     guide.save();

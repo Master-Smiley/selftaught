@@ -22,7 +22,5 @@ export class NavbarComponent implements OnInit {
   ngOnInit() {
   }
 
-  // findUsername() {
-  //   return ;
-  // }
+
 }

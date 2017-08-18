@@ -9,7 +9,7 @@ router.post('/signup', function(req, res, next) {
     console.log(req.body);
     var user = new User({
             username: req.body.username,
-            password: req.body.password,
+            password: bcrypt.hashSync(req.body.password, 10),
             email: req.body.email
         }
 
@@ -73,7 +73,7 @@ router.post('/login', function(req, res, next) {
                 error: { message: 'Invalid login credentials' }
             });
         }
-        if (!user.password) {
+        if (!bcrypt.compareSync(req.body.password, user.password)) {
             return res.status(401).json({
                 title: 'Login failed',
                 error: { message: 'Invalid login credentials' }

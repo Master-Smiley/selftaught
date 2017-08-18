@@ -39,8 +39,4 @@ export class AuthService {
         return localStorage.getItem('token') !== null;
     }
 
-    // getUsername() {
-    //     const decoded = jwt.decode(localStorage.getItem('token'));
-    //     return decoded.user.username;
-    // }
 }
