@@ -1,3 +1,4 @@
+import { AboutUsComponent } from './about-us/about-us.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { LoginComponent } from './auth/login/login.component';
 import { JumbotronComponent } from './jumbotron/jumbotron.component';
@@ -11,7 +12,8 @@ const APP_ROUTES: Routes = [
     {path: 'create', component: CreateGuideComponent},
     {path: 'guides', component: GuideComponent },
     {path: 'user/login', component: LoginComponent},
-    {path: 'user/signup', component: SignupComponent}
+    {path: 'user/signup', component: SignupComponent},
+    {path: 'about-us', component: AboutUsComponent}
 ];
 
 export const routing = RouterModule.forRoot(APP_ROUTES);

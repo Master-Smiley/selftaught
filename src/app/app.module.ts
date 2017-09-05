@@ -16,6 +16,8 @@ import { GuideResourceComponent } from './create-guide/guide-resource/guide-reso
 import { HttpModule } from '@angular/http';
 import { SignupComponent } from './auth/signup/signup.component';
 import { LoginComponent } from './auth/login/login.component';
+import { AboutUsComponent } from './about-us/about-us.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { LoginComponent } from './auth/login/login.component';
     AuthComponent,
     GuideResourceComponent,
     SignupComponent,
-    LoginComponent
+    LoginComponent,
+    AboutUsComponent,
+    FooterComponent
   ],
   imports: [
     FormsModule,
