@@ -28,7 +28,7 @@ export class CreateGuideComponent implements OnInit {
       model.value.prereqs,
       model.value.experienceLevel,
       model.value.guideResources,
-      new User('User', 'Meme team', 'user@gmail.com', 'guide')
+      '599498a55052462a60014b9b'
     );
     this.guideService.addGuide(newGuide)
       .subscribe(

@@ -8,7 +8,7 @@ var schema = new Schema({
     description: { type: String },
     prereqs: { type: String },
     experience: { type: String },
-    guideResources: { type: String },
+    guideResources: { type: Array, "default": [] },
     dateCreated: { type: Date },
     user: { type: Schema.Types.ObjectId, ref: 'User' }
 });
