@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { forEach } from '@angular/router/src/utils/collection';
+import { GuideService } from '../guide/guide.service';
+import { Component, OnInit, Input } from '@angular/core';
+import { Guide } from '../guide/guide.model';
 
 @Component({
   selector: 'app-post-preview',
@@ -6,10 +9,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./post-preview.component.css']
 })
 export class PostPreviewComponent implements OnInit {
-
-  constructor() { }
+  @Input() guide: Guide;
+  constructor(private guideService: GuideService) { }
 
   ngOnInit() {
   }
 
+
+  totalHours(guide: Guide) {
+    let totalTime = 0;
+    (guide.guideResources).forEach(function(resource) {
+      totalTime += resource.resourceTime;
+    });
+    if (totalTime === 1) {
+      return totalTime + ' hr';
+    } else {
+      return totalTime + ' hrs';
+    }
+  }
 }

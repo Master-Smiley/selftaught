@@ -20,7 +20,6 @@ export class CreateGuideComponent implements OnInit {
   }
 
 
-
   save(model: FormGroup) {
     const newGuide = new Guide(
       model.value.title,
@@ -28,7 +27,8 @@ export class CreateGuideComponent implements OnInit {
       model.value.prereqs,
       model.value.experienceLevel,
       model.value.guideResources,
-      '599498a55052462a60014b9b'
+      localStorage.getItem('userId'),
+      'Im a username'
     );
     this.guideService.addGuide(newGuide)
       .subscribe(
@@ -48,13 +48,13 @@ export class CreateGuideComponent implements OnInit {
   }
 
     addGuideResource() {
-      // add guide to the list
+      // add guide resource to the list
       const control = <FormArray>this.rform.controls['guideResources'];
       control.push(this.initGuideResource());
   }
 
     removeGuideResource(i: number) {
-      // remove guide from the list
+      // remove guide resource from the list
       const control = <FormArray>this.rform.controls['guideResources'];
       control.removeAt(i);
   }
@@ -71,7 +71,5 @@ export class CreateGuideComponent implements OnInit {
 
     });
   }
-
-
 
 }

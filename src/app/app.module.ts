@@ -18,6 +18,7 @@ import { SignupComponent } from './auth/signup/signup.component';
 import { LoginComponent } from './auth/login/login.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { FooterComponent } from './footer/footer.component';
+import { GuideListComponent } from './guide/guide-list/guide-list.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { FooterComponent } from './footer/footer.component';
     SignupComponent,
     LoginComponent,
     AboutUsComponent,
-    FooterComponent
+    FooterComponent,
+    GuideListComponent
   ],
   imports: [
     FormsModule,

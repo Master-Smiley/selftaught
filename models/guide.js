@@ -10,7 +10,8 @@ var schema = new Schema({
     experience: { type: String },
     guideResources: { type: Array, "default": [] },
     dateCreated: { type: Date },
-    user: { type: Schema.Types.ObjectId, ref: 'User' }
+    user: { type: Schema.Types.ObjectId, ref: 'User' },
+    username: { type: String }
 });
 
 module.exports = mongoose.model('Guide', schema);
