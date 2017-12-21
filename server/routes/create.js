@@ -21,6 +21,7 @@ router.use('/', function(req, res, next) {
 
 router.post('/', function(req, res, next) {
     console.log(req.body);
+    console.log('node');
     // var decoded = jwt.decode(req.query.token);
     // User.findById(decoded.user._id, function(err, user) {
     //     if (err) {
@@ -34,11 +35,11 @@ router.post('/', function(req, res, next) {
         title: req.body.title,
         description: req.body.description,
         prereqs: req.body.prereqs,
-        experience: req.body.experienceLevel,
+        experience: req.body.experience,
         guideResources: req.body.guideResources,
         dateCreated: Date.now(),
         user: req.body.user,
-        username: 'No youre not'
+        username: req.body.username
     });
 
     console.log(guide);

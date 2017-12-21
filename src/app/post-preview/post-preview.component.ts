@@ -27,4 +27,8 @@ export class PostPreviewComponent implements OnInit {
       return totalTime + ' hrs';
     }
   }
+
+  previewClicked(guide: Guide) {
+    console.log('twas clicked');
+  }
 }

@@ -28,7 +28,7 @@ export class CreateGuideComponent implements OnInit {
       model.value.experienceLevel,
       model.value.guideResources,
       localStorage.getItem('userId'),
-      'Im a username'
+      localStorage.getItem('username')
     );
     this.guideService.addGuide(newGuide)
       .subscribe(

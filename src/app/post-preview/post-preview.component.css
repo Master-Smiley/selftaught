@@ -1,1 +1,8 @@
-#post-preview {}
+ #experience-graphic {
+     width: 20px;
+     height: 100%;
+ }
+ 
+ #clickable-preview {
+     cursor: pointer;
+ }

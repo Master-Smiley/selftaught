@@ -26,7 +26,7 @@ export class GuideService {
                 for (const guide of guides) {
                     transformedGuides.push(new Guide(
                         guide.title, guide.description, guide.prereqs,
-                         guide.experienceLevel, guide.guideResources, guide.user, guide.username
+                         guide.experience, guide.guideResources, guide.user, guide.username
                     ));
                 }
                 this.guides = transformedGuides;
