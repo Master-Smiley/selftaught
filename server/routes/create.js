@@ -44,8 +44,9 @@ router.post('/', function(req, res, next) {
 
     console.log(guide);
 
-    // });
+
     guide.save(function(err, result) {
+        console.log('saved');
         if (err) {
             return res.status(500).json({
                 title: 'A save error occured',
