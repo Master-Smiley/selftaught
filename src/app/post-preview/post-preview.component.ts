@@ -12,6 +12,7 @@ export class PostPreviewComponent implements OnInit {
   @Input() guide: Guide;
   constructor(private guideService: GuideService) { }
 
+
   ngOnInit() {
   }
 
@@ -28,6 +29,7 @@ export class PostPreviewComponent implements OnInit {
     }
   }
 
+  // preview clicked needs to render a page based on database info either on load or express rendering
   previewClicked(guide: Guide) {
     console.log('twas clicked');
   }

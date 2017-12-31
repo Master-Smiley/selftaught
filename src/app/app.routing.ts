@@ -1,3 +1,4 @@
+import { GuideListComponent } from './guide/guide-list/guide-list.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { LoginComponent } from './auth/login/login.component';
@@ -10,7 +11,8 @@ import { Routes, RouterModule } from '@angular/router';
 const APP_ROUTES: Routes = [
     {path: '', component: JumbotronComponent, pathMatch: 'full'},
     {path: 'create', component: CreateGuideComponent},
-    {path: 'guides', component: GuideComponent },
+    {path: 'user/:username/guides/:title', component: GuideComponent},
+    {path: 'guides', component: GuideListComponent },
     {path: 'user/login', component: LoginComponent},
     {path: 'user/signup', component: SignupComponent},
     {path: 'about-us', component: AboutUsComponent}

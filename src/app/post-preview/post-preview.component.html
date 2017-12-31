@@ -2,14 +2,14 @@
     <div class="row mb-4">
         <div class="col-sm-8 mx-auto">
             <article class="card" id="post-preview">
-                <div class="card-block" id="clickable-preview" (click)="previewClicked(guide)">
+                <div class="card-block" id="clickable-preview" (click)="previewClicked(guide)" [routerLink]="'user/' + guide.username + '/guides/' + guide.title">
                     {{ guide.title }}
                 </div>
 
                 <footer class="card-footer">
                     <div class="row">
                         <div class="col-3 mx-left">
-                            {{guide.username}}
+                            {{ guide.username }}
                         </div>
                         <div class="col-3 mx-auto" style="display:block;">
                             <p>
@@ -23,12 +23,12 @@
                             <div *ngIf="guide.experience == 'Advanced'" id="experience-graphic">
                                 <img src="./../../assets/advanced-experience-graphic.png" class="img-fluid mr-1" align="left">
                             </div>
-                                </span> {{guide.experience}}
+                                </span> {{ guide.experience }}
 
                             </p>
                         </div>
                         <div class="col-2 mx-right" align="right">
-                            {{totalHours(guide)}}
+                            {{ totalHours(guide) }}
                         </div>
                     </div>
                 </footer>

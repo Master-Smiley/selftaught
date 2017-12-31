@@ -1,8 +1,10 @@
 var express = require('express');
-var router = express.Router();
+var Guide = require('../../models/guide');
 var bcrypt = require('bcryptjs');
 var jwt = require('jsonwebtoken');
 var User = require('../../models/user');
+var mongoose = require('mongoose');
+var router = express.Router();
 
 
 router.post('/signup', function(req, res, next) {
@@ -89,5 +91,23 @@ router.post('/login', function(req, res, next) {
 
     });
 });
+
+// for getting a single guide start
+router.get('/:username/guides/:title', function(req, res, next) {
+    Guide.findOne({ username: req.params.username, title: req.params.title })
+        .exec(function(err, guide) {
+            if (err) {
+                return res.status(500).json({
+                    title: 'An error occurred',
+                    error: err
+                })
+            }
+            res.status(201).json({
+                message: 'Message fetched',
+                obj: guide
+            });
+        });
+});
+// for getting a single guide end
 
 module.exports = router;

@@ -22,7 +22,8 @@ router.get('/', function(req, res, next) {
             });
         });
 
-})
+});
+
 
 // router.post('/create', function(req, res, next) {
 //     var decoded = jwt.decode(req.query.token);

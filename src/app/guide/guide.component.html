@@ -1,3 +1,58 @@
-<p>
-  guide works!
-</p>
+<div class="container mt-4">
+    <div *ngIf="new_guide; else guideNotFound">
+        <div class="flex-row">
+            <div class="">
+                <div class="align-self-stretch">
+                    <div *ngIf="new_guide.experience == 'Beginner'" id="detail-experience-graphic">
+                        <img src="./../../assets/beginner-experience-graphic.png" class="img-fluid mr-1" align="left">
+                    </div>
+                    <div *ngIf="new_guide.experience == 'Intermediate'" id="detail-experience-graphic">
+                        <img src="./../../assets/intermediate-experience-graphic.png" class="img-fluid mr-1" align="left">
+                    </div>
+                    <div *ngIf="new_guide.experience == 'Advanced'" id="detail-experience-graphic">
+                        <img src="./../../assets/advanced-experience-graphic.png" class="img-fluid mr-1" align="left">
+                    </div>
+                </div>
+                <div>
+                    <h1>
+                        {{ new_guide.title }}
+                    </h1>
+                    <h3 id="author-name">
+                        By: {{ new_guide.username }} on {{ new_guide.dateCreated | date }}
+                    </h3>
+                </div>
+            </div>
+        </div>
+
+        <hr class="mb-2">
+
+
+        <h4>Prerequisites</h4>
+        <p>{{new_guide.prereqs}}</p>
+
+        <hr class="mb-2">
+
+        <h4>Description</h4>
+        <p>{{new_guide.description}}</p>
+
+        <hr class="mb-2">
+
+        <div *ngFor="let resource of new_guide.guideResources; let myIndex = index">
+            <h4>{{myIndex + 1}}. <a href="{{resource.resourceLink}}">{{resource.resourceTitle}}</a></h4>
+            <p style="color: grey;">{{resource.resourceTime}} <span *ngIf="resource.resourceTime === 1">hr</span><span *ngIf="resource.resourceTime !== 1">hrs</span></p>
+            <p>{{resource.resourceContent}}</p>
+            <hr class="mb-2">
+        </div>
+
+        <p>Thanks for reading and don't forget to share!</p>
+
+
+
+    </div>
+    <ng-template #guideNotFound>
+        <div align="center">
+            <h1>Hmmmm... I can't find anything here</h1>
+            <h1>Make sure your URL is correct</h1>
+        </div>
+    </ng-template>
+</div>

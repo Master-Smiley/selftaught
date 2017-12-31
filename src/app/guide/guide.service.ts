@@ -34,4 +34,13 @@ export class GuideService {
             })
             .catch((error: Response) => Observable.throw(error.json()));
     }
+
+    getGuide(url: string) {
+        return this.http.get('http://localhost:3000' + url)
+            .map((response: Response) => {
+                const guide = response.json().obj;
+                console.log(guide);
+                return guide;
+            });
+    }
 }

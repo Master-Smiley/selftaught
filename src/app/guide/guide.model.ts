@@ -1,5 +1,3 @@
-
-
 export class Guide {
     title: string;
     description: string;

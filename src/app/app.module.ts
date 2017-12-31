@@ -9,8 +9,8 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { JumbotronComponent } from './jumbotron/jumbotron.component';
 import { PostPreviewComponent } from './post-preview/post-preview.component';
 import { CreateGuideComponent } from './create-guide/create-guide.component';
-import { GuideComponent } from './guide/guide.component';
 import { GuideService } from './guide/guide.service';
+import { GuideComponent } from './guide/guide.component';
 import { AuthComponent } from './auth/auth.component';
 import { GuideResourceComponent } from './create-guide/guide-resource/guide-resource.component';
 import { HttpModule } from '@angular/http';
@@ -27,14 +27,14 @@ import { GuideListComponent } from './guide/guide-list/guide-list.component';
     JumbotronComponent,
     PostPreviewComponent,
     CreateGuideComponent,
-    GuideComponent,
     AuthComponent,
     GuideResourceComponent,
     SignupComponent,
     LoginComponent,
     AboutUsComponent,
     FooterComponent,
-    GuideListComponent
+    GuideListComponent,
+    GuideComponent
   ],
   imports: [
     FormsModule,
