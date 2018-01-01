@@ -1,3 +1,10 @@
 <div class="container">
-    <app-post-preview [guide]='guide' *ngFor='let guide of guides'></app-post-preview>
+    <div *ngFor='let guide of guides; let i=index'>
+        <div *ngIf="i<num">
+            <app-post-preview [guide]='guide'></app-post-preview>
+        </div>
+    </div>
+    <div *ngIf="num<guidesLength" style="text-align:center">
+        <p class="btn btn-secondary" (click)="showMore()">show more</p>
+    </div>
 </div>
