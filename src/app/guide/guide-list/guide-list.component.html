@@ -1,10 +1,11 @@
 <div class="container">
-    <div *ngFor='let guide of guides; let i=index'>
+    <div *ngFor="let guide of guides | filter:jumboListService.searchText; let i=index">
         <div *ngIf="i<num">
             <app-post-preview [guide]='guide'></app-post-preview>
         </div>
+        <div *ngIf="i==num" style="text-align:center">
+            <p class="btn btn-secondary" (click)="showMore()">show more</p>
+        </div>
     </div>
-    <div *ngIf="num<guidesLength" style="text-align:center">
-        <p class="btn btn-secondary" (click)="showMore()">show more</p>
-    </div>
+
 </div>

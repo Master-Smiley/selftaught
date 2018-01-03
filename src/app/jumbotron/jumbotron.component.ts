@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
+import {JumboListService} from './../jumbo-and-list/jumboList.service';
 
 @Component({
   selector: 'app-jumbotron',
@@ -7,7 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class JumbotronComponent implements OnInit {
 
-  constructor() { }
+  constructor(private jumboListService: JumboListService) { }
+
 
   ngOnInit() {
   }

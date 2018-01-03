@@ -1,5 +1,6 @@
 import { GuideService } from '../guide.service';
-import { Component, OnInit } from '@angular/core';
+import { JumboListService } from '../../jumbo-and-list/jumboList.service';
+import { Component, OnInit, Input, Pipe, PipeTransform } from '@angular/core';
 import { Guide } from '../guide.model';
 
 @Component({
@@ -9,25 +10,25 @@ import { Guide } from '../guide.model';
 })
 export class GuideListComponent implements OnInit {
   guides: Guide[];
-  constructor(private guideService: GuideService) { }
+  constructor(private guideService: GuideService, private jumboListService: JumboListService) { }
+
 
   num = 20;
-  guidesLength: number;
 
   ngOnInit() {
+    console.log(this.jumboListService.searchText);
     this.num = 20;
     this.guideService.getGuides()
             .subscribe(
                 (guides: Guide[]) => {
                     this.guides = guides;
-                    this.guidesLength = guides.length;
                 }
             );
   }
+
+
   showMore() {
     this.num += 20;
-    console.log(this.num);
-    console.log(this.guidesLength);
   }
 
 }

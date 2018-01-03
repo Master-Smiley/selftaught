@@ -3,7 +3,7 @@ import { routing } from './app.routing';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+import { FilterPipe } from './jumbo-and-list/filter.pipe';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { JumbotronComponent } from './jumbotron/jumbotron.component';
@@ -19,6 +19,8 @@ import { LoginComponent } from './auth/login/login.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { FooterComponent } from './footer/footer.component';
 import { GuideListComponent } from './guide/guide-list/guide-list.component';
+import { JumboAndListComponent } from './jumbo-and-list/jumbo-and-list.component';
+import { JumboListService} from './jumbo-and-list/jumboList.service';
 
 @NgModule({
   declarations: [
@@ -33,8 +35,10 @@ import { GuideListComponent } from './guide/guide-list/guide-list.component';
     LoginComponent,
     AboutUsComponent,
     FooterComponent,
+    FilterPipe,
     GuideListComponent,
-    GuideComponent
+    GuideComponent,
+    JumboAndListComponent
   ],
   imports: [
     FormsModule,
@@ -43,7 +47,7 @@ import { GuideListComponent } from './guide/guide-list/guide-list.component';
     routing,
     HttpModule
   ],
-  providers: [GuideService, AuthService],
+  providers: [JumboListService, GuideService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -8,10 +8,8 @@
         <!--Search Bar-->
 
         <div class="col-lg-6" style="margin: 0 auto">
-            <input type="text" class="form-control" placeholder="Type a subject or title here" style="text-align:center">
+            <input [(ngModel)]="jumboListService.searchText" type="text" class="form-control" placeholder="Type a subject or title here" style="text-align:center" ngDefaultControl>
         </div>
         <!-- Search Bar End -->
     </div>
 </header>
-
-<app-guide-list></app-guide-list>
