@@ -12,6 +12,7 @@ import { Observable } from 'rxjs/Rx';
 export class GuideComponent implements OnInit {
 
   new_guide: Guide;
+  loaded = false;
 
   constructor(public guideService: GuideService, private router: Router) {
   }
@@ -20,8 +21,7 @@ export class GuideComponent implements OnInit {
     const new_url = this.router.url;
     // i need to change this to be type guide
     this.guideService.getGuide(new_url)
-      .subscribe(res => { this.new_guide = res; });
-    console.log(new_url);
+      .subscribe(res => { this.new_guide = res; this.loaded = true; });
 
   }
 

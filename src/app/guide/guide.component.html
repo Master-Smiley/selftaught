@@ -1,5 +1,5 @@
 <div class="container mt-4">
-    <div *ngIf="new_guide; else guideNotFound">
+    <div *ngIf="new_guide">
         <div class="flex-row">
             <div class="">
                 <div class="align-self-stretch">
@@ -46,13 +46,16 @@
 
         <p>Thanks for reading and don't forget to share!</p>
 
-
-
     </div>
-    <ng-template #guideNotFound>
+    <div *ngIf="!new_guide && loaded">
         <div align="center">
-            <h1>Hmmmm... I can't find anything here</h1>
-            <h1>Make sure your URL is correct</h1>
+            <h2>Hmmmm... I can't find anything here</h2>
+            <h2>Make sure your URL is correct</h2>
+            <a href="/">click here to go to the main page</a>
         </div>
-    </ng-template>
-</div>
+    </div>
+
+    <div *ngIf="!loaded">
+        <h1 align="center">loading...</h1>
+        <div>
+        </div>

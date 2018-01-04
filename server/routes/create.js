@@ -52,12 +52,32 @@ router.post('/', function(req, res, next) {
                 title: 'A save error occured',
                 error: err
             });
-            res.status(201).json({
-                message: "Saved message",
-                obj: result
-            });
         }
+        res.status(201).json({
+            message: "Saved message",
+            obj: result
+        });
     });
+
+    User.findOne({ username: req.body.username })
+        .exec(function(err, user) {
+            if (err) {
+                return res.status(500).json({
+                    title: 'an error occurred',
+                    error: err
+                });
+            }
+            user.guides.push(guide);
+            user.save(function(err, result) {
+                if (err) {
+                    return res.status(500).json({
+                        title: 'A save error occured',
+                        error: err
+                    });
+                }
+            });
+        });
+
 })
 
 

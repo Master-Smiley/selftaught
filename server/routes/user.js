@@ -19,7 +19,7 @@ router.post('/signup', function(req, res, next) {
     user.save(function(err, result) {
         if (err) {
             return res.status(500).json({
-                title: 'an error occured',
+                title: 'an error occurred',
                 error: err
             });
         }
@@ -92,8 +92,28 @@ router.post('/login', function(req, res, next) {
     });
 });
 
+// getting list of user's published guides [begin]
+router.get('/:username/guides', function(req, res) {
+    var username = req.params.username;
+    Guide.find({ username: req.params.username })
+        .exec(function(err, guide) {
+            if (err) {
+                return res.status(500).json({
+                    title: 'An error occurred',
+                    error: err
+                })
+            }
+            res.status(201).json({
+                message: 'Message fetched',
+                obj: guide,
+                username: req.params.username
+            });
+        });
+});
+// getting list of user's published guides [end]
+
 // for getting a single guide start
-router.get('/:username/guides/:title', function(req, res, next) {
+router.get('/:username/guides/:title', function(req, res) {
     Guide.findOne({ username: req.params.username, title: req.params.title })
         .exec(function(err, guide) {
             if (err) {

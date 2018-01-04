@@ -43,4 +43,27 @@ export class GuideService {
                 return guide;
             });
     }
+
+    getUserGuides(url: string) {
+        return this.http.get('http://localhost:3000' + url)
+            .map((response: Response) => {
+                const guides = response.json().obj;
+                const transformedGuides: Guide[] = [];
+                for (const guide of guides) {
+                    transformedGuides.push(new Guide(
+                        guide.title, guide.description, guide.prereqs,
+                        guide.experience, guide.guideResources, guide.user, guide.username
+                    ));
+                }
+                this.guides = transformedGuides.reverse();
+                return transformedGuides.reverse();
+            });
+    }
+
+    getUserUsername(url: string) {
+        return this.http.get('http://localhost:3000' + url)
+            .map((response: Response) => {
+                return response.json().username;
+            });
+    }
 }

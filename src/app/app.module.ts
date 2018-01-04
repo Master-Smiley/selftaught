@@ -21,6 +21,8 @@ import { FooterComponent } from './footer/footer.component';
 import { GuideListComponent } from './guide/guide-list/guide-list.component';
 import { JumboAndListComponent } from './jumbo-and-list/jumbo-and-list.component';
 import { JumboListService} from './jumbo-and-list/jumboList.service';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { UserDetailedComponent } from './user-detailed/user-detailed.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,9 @@ import { JumboListService} from './jumbo-and-list/jumboList.service';
     FilterPipe,
     GuideListComponent,
     GuideComponent,
-    JumboAndListComponent
+    JumboAndListComponent,
+    PageNotFoundComponent,
+    UserDetailedComponent
   ],
   imports: [
     FormsModule,

@@ -5,6 +5,7 @@ import { Form, FormArray, FormBuilder, FormGroup, ReactiveFormsModule, Validator
 import { User } from '../auth/user.model';
 import { GuideResource } from '../create-guide/guide-resource/guide-resource.model';
 import { Observable } from 'rxjs/Rx';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -16,9 +17,17 @@ export class CreateGuideComponent implements OnInit {
 
   rform: FormGroup;
 
-  constructor(private fb: FormBuilder, public guideService: GuideService) {
+  constructor(private fb: FormBuilder, public guideService: GuideService, private router: Router) {
   }
 
+  formatLinksGuide(array) {
+    array.forEach(element => {
+      if (!element.resourceLink.includes('http://')) {
+        element.resourceLink = 'http://' + element.resourceLink;
+      }
+    });
+    return array;
+  }
 
   save(model: FormGroup) {
     const newGuide = new Guide(
@@ -26,7 +35,7 @@ export class CreateGuideComponent implements OnInit {
       model.value.description,
       model.value.prereqs,
       model.value.experienceLevel,
-      model.value.guideResources,
+      this.formatLinksGuide(model.value.guideResources),
       localStorage.getItem('userId'),
       localStorage.getItem('username')
     );
@@ -35,6 +44,7 @@ export class CreateGuideComponent implements OnInit {
         data => console.log(data),
         error => console.error(error)
       );
+    window.location.href = '/user/' + localStorage.getItem('username') + '/guides/' + model.value.title;
 
   }
 

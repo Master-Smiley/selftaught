@@ -1,3 +1,5 @@
+import { UserDetailedComponent } from './user-detailed/user-detailed.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { JumboAndListComponent } from './jumbo-and-list/jumbo-and-list.component';
 import { GuideListComponent } from './guide/guide-list/guide-list.component';
 import { AboutUsComponent } from './about-us/about-us.component';
@@ -13,10 +15,12 @@ const APP_ROUTES: Routes = [
     {path: '', component: JumboAndListComponent, pathMatch: 'full'},
     {path: 'create', component: CreateGuideComponent},
     {path: 'user/:username/guides/:title', component: GuideComponent},
+    {path: 'user/:username/guides', component: UserDetailedComponent},
     {path: 'guides', component: GuideListComponent },
     {path: 'user/login', component: LoginComponent},
     {path: 'user/signup', component: SignupComponent},
-    {path: 'about-us', component: AboutUsComponent}
+    {path: 'about-us', component: AboutUsComponent},
+    {path: '**', component: PageNotFoundComponent}
 ];
 
 export const routing = RouterModule.forRoot(APP_ROUTES);
