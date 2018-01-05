@@ -1,18 +1,21 @@
 <div class="container">
     <div align="center" class="mt-5 mb-5">
-        <h1>Hey, {{username}}</h1>
-        <h1>Here are all your published guides</h1>
+        <h1 *ngIf="username !== null && loaded">Hey, {{username}}</h1>
+        <h1 *ngIf="username == null && loaded">hmmm... I don't think that user exists</h1>
     </div>
-
-    <div *ngFor="let guide of this.guides; let i=index">
-        <div *ngIf="i<num">
-            <app-post-preview [guide]='guide'></app-post-preview>
-        </div>
-        <div *ngIf="i==num" style="text-align:center">
-            <p class="btn btn-secondary" (click)="showMore()">show more</p>
+    <div *ngIf="guidesExist && loaded">
+        <h2 *ngIf="username !== null && guidesQuantity !== 0" class="mb-3" align="center">Here are all of your published guides</h2>
+        <h2 *ngIf="username !== null && guidesQuantity === 0" class="mb-3" align="center">You don't seem to have posted any guides yet. Lets try to change that!</h2>
+        <div *ngFor="let guide of this.guides; let i=index">
+            <div *ngIf="i<num">
+                <app-post-preview [guide]='guide'></app-post-preview>
+            </div>
+            <div *ngIf="i==num" style="text-align:center">
+                <p class="btn btn-secondary" (click)="showMore()">show more</p>
+            </div>
         </div>
     </div>
-    <ng-template #loading>
+    <div *ngIf="!loaded" #loading>
         <h1 align="center">Loading Guides...</h1>
-    </ng-template>
+    </div>
 </div>

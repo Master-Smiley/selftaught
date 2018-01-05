@@ -15,6 +15,9 @@ export class UserDetailedComponent implements OnInit {
   num = 20;
   guides: Guide[];
   username: string;
+  guidesExist = false;
+  loaded = false;
+  guidesQuantity: number;
 
 
   ngOnInit() {
@@ -22,13 +25,17 @@ export class UserDetailedComponent implements OnInit {
       .subscribe(
         (guides: Guide[]) => {
           this.guides = guides;
+          this.guidesExist = true;
+          this.loaded = true;
+          this.guidesQuantity = this.guides.length;
         }
       );
 
     this.guideService.getUserUsername(this.router.url)
       .subscribe(
-        (username => {
-          this.username = username;
+        (object => {
+          console.log(object);
+          this.username = object.username;
           console.log(this.username);
         })
       );

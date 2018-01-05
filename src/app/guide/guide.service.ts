@@ -63,7 +63,7 @@ export class GuideService {
     getUserUsername(url: string) {
         return this.http.get('http://localhost:3000' + url)
             .map((response: Response) => {
-                return response.json().username;
+                return response.json();
             });
     }
 }

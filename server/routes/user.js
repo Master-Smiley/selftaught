@@ -94,21 +94,77 @@ router.post('/login', function(req, res, next) {
 
 // getting list of user's published guides [begin]
 router.get('/:username/guides', function(req, res) {
-    var username = req.params.username;
-    Guide.find({ username: req.params.username })
-        .exec(function(err, guide) {
-            if (err) {
-                return res.status(500).json({
-                    title: 'An error occurred',
-                    error: err
-                })
-            }
-            res.status(201).json({
-                message: 'Message fetched',
-                obj: guide,
-                username: req.params.username
+    var theUsername = req.params.username;
+    var searchUserVar;
+
+    function searchUser(callback) {
+        console.log('started searchUser');
+        User.findOne({ username: theUsername })
+            .exec(function(err, user) {
+                if (err) {
+                    searchUserVar = ({
+                        title: 'oops. User search error occured',
+                        error: err
+                    });
+                }
+                if (user) {
+                    console.log(user);
+                    searchUserVar = ({
+                        message: 'I got the user',
+                        theUser: user
+                    });
+                }
+                if (!user) {
+                    searchUserVar = ({
+                        message: 'there is no user by that name',
+                        theUser: null
+                    });
+                }
+                callback();
             });
+    }
+
+    function getUsername(callback) {
+        theUsername = !(searchUserVar.theUser === null || searchUserVar.theUser === undefined) ? searchUserVar.theUser.username : null;
+        callback();
+    }
+
+    function searchGuide() {
+        Guide.find({ username: theUsername })
+            .exec(function(err, guide) {
+                if (err) {
+                    return res.status(500).json({
+                        title: 'An error occurred',
+                        error: err,
+                        theUser: null
+                    });
+                }
+
+                if (guide.length !== 0) {
+                    return res.status(201).json({
+                        message: 'Message fetched',
+                        obj: guide,
+                        username: theUsername
+                    });
+                } else {
+                    return res.status(201).json({
+                        message: 'Message fetched',
+                        obj: guide,
+                        username: theUsername
+                    });
+                }
+
+            });
+    }
+
+    searchUser(function() {
+        getUsername(function() {
+            searchGuide(theUsername);
         });
+    });
+
+
+
 });
 // getting list of user's published guides [end]
 
