@@ -9,12 +9,16 @@ export class GuideService {
     private guides: Guide[] = [];
     constructor(private http: Http) {}
 
+    submissionSuccess = false;
     addGuide(guide: Guide) {
         const body = JSON.stringify(guide);
         const headers = new Headers({'Content-Type': 'application/json'});
         const token = localStorage.getItem('token') ? '?token=' + localStorage.getItem('token') : '';
         return this.http.post('http://localhost:3000/create' + token, body, {headers: headers})
-            .map((response: Response) => response.json())
+            .map((response: Response) => {
+                response.json();
+                this.submissionSuccess = true;
+            })
             .catch((error: Response) => Observable.throw(error.json));
     }
 

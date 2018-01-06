@@ -8,7 +8,8 @@ var router = express.Router();
 
 
 router.post('/signup', function(req, res, next) {
-    console.log(req.body);
+
+
     var user = new User({
             username: req.body.username,
             password: bcrypt.hashSync(req.body.password, 10),
@@ -16,6 +17,7 @@ router.post('/signup', function(req, res, next) {
         }
 
     );
+
     user.save(function(err, result) {
         if (err) {
             return res.status(500).json({
@@ -29,6 +31,8 @@ router.post('/signup', function(req, res, next) {
         });
     });
 });
+
+
 
 // router.post('/login', function(res, req, next) {
 

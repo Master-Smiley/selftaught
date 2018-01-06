@@ -20,16 +20,8 @@ router.use('/', function(req, res, next) {
 });
 
 router.post('/', function(req, res, next) {
-    console.log(req.body);
-    console.log('node');
-    // var decoded = jwt.decode(req.query.token);
-    // User.findById(decoded.user._id, function(err, user) {
-    //     if (err) {
-    //         return res.status(500).json({
-    //             title: "A query error occurred",
-    //             error: err
-    //         });
-    //     }
+    var jsonPayload;
+
 
     var guide = new Guide({
         title: req.body.title,
@@ -42,43 +34,78 @@ router.post('/', function(req, res, next) {
         username: req.body.username
     });
 
-    console.log(guide);
+    checkGuideTitle = new Promise(function(resolve, reject) {
+        console.log('starting checkGuideTitle');
+        Guide.findOne({ title: guide.title, user: guide.user })
+            .exec(function(err, theGuide) {
+                if (err) {
+                    jsonPayload = ({
+                        title: 'guide search error occurred',
+                        error: err
+                    });
+                    reject();
+                }
+                if (theGuide !== null) {
+                    jsonPayload = ({
+                        title: 'there is already a guide with this name',
+                        error: err
+                    });
+                    reject();
+                } else {
+                    jsonPayload = {
+                        title: 'that title is available'
+                    };
+                    resolve();
+                }
 
-
-    guide.save(function(err, result) {
-        console.log('saved');
-        if (err) {
-            return res.status(500).json({
-                title: 'A save error occured',
-                error: err
             });
-        }
-        res.status(201).json({
-            message: "Saved message",
-            obj: result
-        });
     });
 
-    User.findOne({ username: req.body.username })
-        .exec(function(err, user) {
+    saveThings = function() {
+        console.log('starting saveThings');
+        guide.save(function(err, result) {
+            console.log('saved');
             if (err) {
                 return res.status(500).json({
-                    title: 'an error occurred',
+                    title: 'A save error occured',
                     error: err
                 });
             }
-            user.guides.push(guide);
-            user.save(function(err, result) {
-                if (err) {
-                    return res.status(500).json({
-                        title: 'A save error occured',
-                        error: err
-                    });
-                }
+            res.status(201).json({
+                message: "Saved message",
+                obj: result
             });
         });
 
-})
+        User.findOne({ username: req.body.username })
+            .exec(function(err, user) {
+                if (err) {
+                    return res.status(500).json({
+                        title: 'an error occurred',
+                        error: err
+                    });
+                }
+                user.guides.push(guide);
+                user.save(function(err, result) {
+                    if (err) {
+                        return res.status(500).json({
+                            title: 'A save error occured',
+                            error: err
+                        });
+                    }
+                });
+            });
+    };
+    errorCodes = function() {
+        console.log('starting errorCodes');
+        console.log(jsonPayload);
+        return res.status(500).json(jsonPayload);
+    };
+
+    checkGuideTitle.then(saveThings, errorCodes);
+
+
+});
 
 
 module.exports = router;

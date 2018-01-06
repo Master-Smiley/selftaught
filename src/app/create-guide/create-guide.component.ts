@@ -41,10 +41,15 @@ export class CreateGuideComponent implements OnInit {
     );
     this.guideService.addGuide(newGuide)
       .subscribe(
-        data => console.log(data),
+        data => {
+          console.log(data);
+          if (this.guideService.submissionSuccess) {
+            window.location.href = '/user/' + localStorage.getItem('username') + '/guides/' + model.value.title;
+          }
+        },
         error => console.error(error)
       );
-    window.location.href = '/user/' + localStorage.getItem('username') + '/guides/' + model.value.title;
+
 
   }
 

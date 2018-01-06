@@ -5,7 +5,10 @@
     </div>
     <div *ngIf="guidesExist && loaded">
         <h2 *ngIf="username !== null && guidesQuantity !== 0" class="mb-3" align="center">Here are all of your published guides</h2>
-        <h2 *ngIf="username !== null && guidesQuantity === 0" class="mb-3" align="center">You don't seem to have posted any guides yet. Lets try to change that!</h2>
+        <div *ngIf="username !== null && guidesQuantity === 0" style="text-align: center">
+            <h2 class="mb-3" align="center">You don't seem to have posted any guides yet. Lets try to change that!</h2>
+            <a href="/create" class="btn btn-primary">click here to add your first guide</a>
+        </div>
         <div *ngFor="let guide of this.guides; let i=index">
             <div *ngIf="i<num">
                 <app-post-preview [guide]='guide'></app-post-preview>
