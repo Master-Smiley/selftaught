@@ -5,25 +5,40 @@
             <div class="form-group">
                 <label for="username">choose username:</label>
                 <input type="text" id="username" class="form-control" formControlName="username">
+                <small [hidden]="signupForm.controls.username.valid || !signupForm.controls.username.dirty" class="text-danger">
+                Invalid Username
+                </small>
             </div>
 
             <div class="form-group">
                 <label for="email">enter email:</label>
                 <input type="email" id="email" class="form-control" formControlName="email">
+                <small [hidden]="signupForm.controls.email.valid  || !signupForm.controls.email.dirty" class="text-danger">
+                Invalid email address
+                </small>
             </div>
 
             <div class="form-group">
                 <label for="password">Password:</label>
                 <input type="password" id="password" class="form-control" formControlName="password">
+                <small [hidden]="signupForm.controls.password.valid || !signupForm.controls.password.dirty" class="text-danger">
+                Invalid password
+                </small>
             </div>
 
 
             <div class="form-group">
                 <label for="password">Re-enter Password:</label>
                 <input type="password" id="re_password" class="form-control" formControlName="re_password">
+                <small [hidden]="signupForm.controls.re_password.valid || !signupForm.controls.re_password.dirty" class="text-danger">
+                Invalid re-entered password
+                </small>
             </div>
 
             <button type="submit" value="submit" class="btn btn-block btn-primary" [disabled]="!signupForm.valid">Sign Up</button>
+            <small [hidden]="signupForm.valid" class="text-danger">
+                Not valid yet... make sure your passwords match!
+            </small>
 
         </form>
 

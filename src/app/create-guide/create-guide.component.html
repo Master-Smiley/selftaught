@@ -3,21 +3,41 @@
         <div class="form-group">
             <h1 style="text-align:center">Create a guide</h1>
 
-            <label class="mt-4">Title</label>
-            <input type="text" class="form-control" formControlName="title">
+            <div class="form-group">
+                <label class="mt-4">Title</label>
+                <input type="text" class="form-control" formControlName="title">
+                <small [hidden]="rform.controls.title.valid" class="text-danger">
+                Title is required
+                </small>
+            </div>
 
-            <label class="mt-4">Description</label>
-            <textarea id="description" type="text" class="form-control" formControlName="description"></textarea>
+            <div class="form-group">
+                <label class="mt-4">Description</label>
+                <textarea id="description" type="text" class="form-control" formControlName="description"></textarea>
+                <small [hidden]="rform.controls.description.valid" class="text-danger">
+                Description is required
+                </small>
+            </div>
 
-            <label class="mt-4">Required prerequisite knowledge</label>
-            <textarea id="prereqs" type="text" class="form-control" formControlName="prereqs"></textarea>
+            <div class="form-group">
+                <label class="mt-4">Required prerequisite knowledge</label>
+                <textarea id="prereqs" type="text" class="form-control" formControlName="prereqs"></textarea>
+                <small [hidden]="rform.controls.prereqs.valid" class="text-danger">
+                Prerequisite description is required
+                </small>
+            </div>
 
-            <label class="mt-4">What should their experience level be before starting this guide? (Beginner, Intermediate, Advanced)</label>
-            <select class="form-control" formControlName="experienceLevel" id="experienceLevel">
+            <div class="form-group">
+                <label class="mt-4">What should their experience level be before starting this guide? (Beginner, Intermediate, Advanced)</label>
+                <select class="form-control" formControlName="experienceLevel" id="experienceLevel">
               <option value="Beginner">Beginner</option>
               <option value="Intermediate">Intermediate</option>
               <option value="Advanced">Advanced</option>
             </select>
+                <small [hidden]="rform.controls.experienceLevel.valid" class="text-danger">
+            You must choose a suggested experience level
+            </small>
+            </div>
 
             <div formArrayName="guideResources">
                 <div *ngFor="let resource of rform.controls.guideResources.controls; let i=index">
@@ -38,7 +58,12 @@
 
         </div>
 
-        <button type="submit" class="btn btn-success form-control mb-5" [disabled]="!rform.valid">Submit Guide</button>
+        <div class="form-group">
+            <button type="submit" class="btn btn-success form-control mb-5" [disabled]="!rform.valid">Submit Guide</button>
+            <small [hidden]="rform.valid" class="text-danger">
+            Your form is not valid. Please fix before submitting!
+            </small>
+        </div>
 
     </div>
 

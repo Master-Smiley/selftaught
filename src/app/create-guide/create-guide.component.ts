@@ -1,3 +1,4 @@
+import { ValidateFn } from 'codelyzer/walkerFactory/walkerFn';
 import { GuideService } from '../guide/guide.service';
 import { Component, OnInit } from '@angular/core';
 import { Guide } from '../guide/guide.model';
@@ -6,6 +7,7 @@ import { User } from '../auth/user.model';
 import { GuideResource } from '../create-guide/guide-resource/guide-resource.model';
 import { Observable } from 'rxjs/Rx';
 import { Router } from '@angular/router';
+import { CustomValidators } from 'ng2-validation';
 
 
 @Component({
@@ -56,8 +58,8 @@ export class CreateGuideComponent implements OnInit {
   initGuideResource() {
       return this.fb.group({
         resourceTitle: [null, Validators.compose([Validators.required])],
-        resourceLink: [null, Validators.compose([Validators.required])],
-        resourceTime: [null, Validators.compose([Validators.required])],
+        resourceLink: [null, Validators.compose([Validators.required, CustomValidators.url])],
+        resourceTime: [null, Validators.compose([Validators.required, CustomValidators.number])],
         resourceContent: [null, Validators.compose([Validators.required])]
       });
   }
