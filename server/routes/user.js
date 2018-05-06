@@ -33,38 +33,6 @@ router.post('/signup', function(req, res, next) {
 });
 
 
-
-// router.post('/login', function(res, req, next) {
-
-//     User.findOne({ username: req.body.username }, function(err, user) {
-//         if (err) {
-//             return res.status(500).json({
-//                 title: 'an error occured',
-//                 error: err
-//             });
-//         }
-//         if (!user) {
-//             return res.statusCode(401).json({
-//                 title: 'login failed',
-//                 error: { message: "Invalid login credentials" }
-//             });
-//         }
-//         if (!password) {
-//             return res.statusCode(401).json({
-//                 title: 'login failed',
-//                 error: { message: "Invalid login credentials" }
-//             });
-//         }
-
-//         var token = jwt.sign({ user: user }, 'secret', { expiresIn: 7200 });
-//         res.statusCode(200).json({
-//             message: "Login Successful",
-//             token: token,
-//             userId: user._id
-//         });
-//     });
-// });
-
 router.post('/login', function(req, res, next) {
     User.findOne({ username: req.body.username }, function(err, user) {
         if (err) {
