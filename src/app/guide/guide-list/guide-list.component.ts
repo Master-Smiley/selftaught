@@ -16,7 +16,6 @@ export class GuideListComponent implements OnInit {
   num = 20;
 
   ngOnInit() {
-    console.log(this.jumboListService.searchText);
     this.num = 20;
     this.guideService.getGuides()
             .subscribe(

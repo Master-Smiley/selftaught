@@ -1,3 +1,4 @@
+import { ErrorsService } from '../errors/errors.service';
 import { Injectable } from '@angular/core';
 import { Http, Headers, Response } from '@angular/http';
 import 'rxjs/Rx';
@@ -8,7 +9,7 @@ import { jwt } from 'jsonwebtoken';
 
 @Injectable()
 export class AuthService {
-    constructor(private http: Http) {}
+    constructor(private http: Http, private errorService: ErrorsService) {}
 
     signup(user: User) {
         const body = JSON.stringify(user);
@@ -16,6 +17,7 @@ export class AuthService {
         return this.http.post('http://localhost:3000/user/signup', body, {headers: headers})
             .map((response: Response) => response.json())
             .catch((error: Response) => {
+                this.errorService.handleError(error.json());
                 return Observable.throw(error.json());
             });
     }
@@ -27,6 +29,7 @@ export class AuthService {
         return this.http.post('http://localhost:3000/user/login', body, {headers: headers})
             .map((response: Response) => response.json())
             .catch((error: Response) => {
+                this.errorService.handleError(error.json());
                 return Observable.throw(error.json());
             });
     }

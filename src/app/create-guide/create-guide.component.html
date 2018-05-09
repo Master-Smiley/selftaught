@@ -1,4 +1,9 @@
-<form [formGroup]="rform" (ngSubmit)="save(rform)">
+<div class="mt-5" *ngIf="!loggedIn()">
+    <h1 class="text-center" style="color: red">Oops!</h1>
+    <h2 class="text-center" style="color: red">Please log in or create an account before submitting a guide</h2>
+</div>
+
+<form *ngIf="loggedIn()" [formGroup]="rform" (ngSubmit)="save(rform)">
     <div class="container mt-5">
         <div class="form-group">
             <h1 style="text-align:center">Create a guide</h1>

@@ -1,3 +1,4 @@
+import { ErrorsService } from './errors/errors.service';
 import { AuthService } from './auth/auth.service';
 import { routing } from './app.routing';
 import { BrowserModule } from '@angular/platform-browser';
@@ -23,6 +24,7 @@ import { JumboAndListComponent } from './jumbo-and-list/jumbo-and-list.component
 import { JumboListService} from './jumbo-and-list/jumboList.service';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { UserDetailedComponent } from './user-detailed/user-detailed.component';
+import { ErrorsComponent } from './errors/errors.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +44,8 @@ import { UserDetailedComponent } from './user-detailed/user-detailed.component';
     GuideComponent,
     JumboAndListComponent,
     PageNotFoundComponent,
-    UserDetailedComponent
+    UserDetailedComponent,
+    ErrorsComponent
   ],
   imports: [
     FormsModule,
@@ -51,7 +54,7 @@ import { UserDetailedComponent } from './user-detailed/user-detailed.component';
     routing,
     HttpModule
   ],
-  providers: [JumboListService, GuideService, AuthService],
+  providers: [JumboListService, GuideService, AuthService, ErrorsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

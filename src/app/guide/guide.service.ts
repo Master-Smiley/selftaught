@@ -1,3 +1,4 @@
+import { ErrorsService } from '../errors/errors.service';
 import { Guide } from './guide.model';
 import { Headers, Http, Response } from '@angular/http';
 import {Injectable} from '@angular/core';
@@ -7,7 +8,7 @@ import { Observable } from 'rxjs/Rx';
 @Injectable()
 export class GuideService {
     private guides: Guide[] = [];
-    constructor(private http: Http) {}
+    constructor(private http: Http, private errorService: ErrorsService) {}
 
     submissionSuccess = false;
     addGuide(guide: Guide) {
@@ -19,7 +20,10 @@ export class GuideService {
                 response.json();
                 this.submissionSuccess = true;
             })
-            .catch((error: Response) => Observable.throw(error.json));
+            .catch((error: Response) => {
+                this.errorService.handleError(error.json());
+                return Observable.throw(error.json);
+            });
     }
 
     getGuides() {
@@ -36,7 +40,10 @@ export class GuideService {
                 this.guides = transformedGuides;
                 return transformedGuides;
             })
-            .catch((error: Response) => Observable.throw(error.json()));
+            .catch((error: Response) => {
+                this.errorService.handleError(error.json());
+                return Observable.throw(error.json);
+            });
     }
 
     getGuide(url: string) {

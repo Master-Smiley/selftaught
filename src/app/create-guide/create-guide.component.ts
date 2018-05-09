@@ -1,3 +1,4 @@
+import { ErrorsService } from '../errors/errors.service';
 import { ValidateFn } from 'codelyzer/walkerFactory/walkerFn';
 import { GuideService } from '../guide/guide.service';
 import { Component, OnInit } from '@angular/core';
@@ -22,6 +23,9 @@ export class CreateGuideComponent implements OnInit {
   constructor(private fb: FormBuilder, public guideService: GuideService, private router: Router) {
   }
 
+  loggedIn() {
+    return localStorage.getItem('token') !== null;
+  }
   formatLinksGuide(array) {
     array.forEach(element => {
       if (!element.resourceLink.includes('http://')) {
