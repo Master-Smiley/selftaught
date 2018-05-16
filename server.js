@@ -13,7 +13,7 @@ const create = require('./server/routes/create');
 
 const app = express();
 mongoose.Promise = global.Promise;
-mongoose.connect('localhost:27017/selftaught');
+mongoose.connect(process.env.MONGODB_URI);
 
 // If an incoming request uses
 // a protocol other than HTTPS,
