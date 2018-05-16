@@ -8,7 +8,7 @@ import {JumboListService} from './../jumbo-and-list/jumboList.service';
 })
 export class JumbotronComponent implements OnInit {
 
-  constructor(private jumboListService: JumboListService) { }
+  constructor(public jumboListService: JumboListService) { }
 
 
   ngOnInit() {
