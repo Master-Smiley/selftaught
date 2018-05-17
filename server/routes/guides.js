@@ -7,6 +7,7 @@ var jwt = require('jsonwebtoken');
 
 
 router.get('/', function(req, res, next) {
+    console.log("getting guides!!");
     Guide.find()
         .exec(function(err, guides) {
             if (err) {
