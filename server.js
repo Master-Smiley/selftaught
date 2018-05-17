@@ -13,6 +13,9 @@ const create = require('./server/routes/create');
 
 const app = express();
 mongoose.Promise = global.Promise;
+
+console.log("about to log uri");
+console.log(process.env.MONGOLAB_SILVER_URI);
 mongoose.connect(process.env.MONGOLAB_SILVER_URI);
 
 // If an incoming request uses
@@ -65,7 +68,7 @@ app.use(function(req, res, next) {
 /**
  * Get port from environment and store in Express.
  */
-const port = process.env.PORT || '8080';
+const port = process.env.PORT || 8080;
 app.set('port', port);
 
 /**
