@@ -15,7 +15,7 @@ const app = express();
 mongoose.Promise = global.Promise;
 
 
-mongoose.connect(process.env.MONGOLAB_SILVER_URI);
+mongoose.connect(uri, process.env.MONGOLAB_SILVER_URI);
 
 
 // Parsers for POST data
