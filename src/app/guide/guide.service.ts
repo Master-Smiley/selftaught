@@ -15,7 +15,7 @@ export class GuideService {
         const body = JSON.stringify(guide);
         const headers = new Headers({'Content-Type': 'application/json'});
         const token = localStorage.getItem('token') ? '?token=' + localStorage.getItem('token') : '';
-        return this.http.post('https://www.mighty-escarpment-97466.herokuapp.com/create' + token, body, {headers: headers})
+        return this.http.post('https://localhost:3000/create' + token, body, {headers: headers})
             .map((response: Response) => {
                 response.json();
                 this.submissionSuccess = true;
@@ -27,7 +27,7 @@ export class GuideService {
     }
 
     getGuides() {
-        return this.http.get('https://www.mighty-escarpment-97466.herokuapp.com/guides')
+        return this.http.get('https://localhost:3000/guides')
             .map((response: Response) => {
                 const guides = response.json().obj;
                 const transformedGuides: Guide[] = [];
@@ -47,7 +47,7 @@ export class GuideService {
     }
 
     getGuide(url: string) {
-        return this.http.get('https://www.mighty-escarpment-97466.herokuapp.com' + url)
+        return this.http.get('https://localhost:3000' + url)
             .map((response: Response) => {
                 const guide = response.json().obj;
                 console.log(guide);
@@ -56,7 +56,7 @@ export class GuideService {
     }
 
     getUserGuides(url: string) {
-        return this.http.get('https://www.mighty-escarpment-97466.herokuapp.com' + url)
+        return this.http.get('localhost:3000' + url)
             .map((response: Response) => {
                 const guides = response.json().obj;
                 const transformedGuides: Guide[] = [];
@@ -72,7 +72,7 @@ export class GuideService {
     }
 
     getUserUsername(url: string) {
-        return this.http.get('https://www.mighty-escarpment-97466.herokuapp.com' + url)
+        return this.http.get('localhost:3000' + url)
             .map((response: Response) => {
                 return response.json();
             });

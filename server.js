@@ -14,9 +14,8 @@ const create = require('./server/routes/create');
 const app = express();
 mongoose.Promise = global.Promise;
 
-console.log("about to log uri");
-console.log(process.env.MONGOLAB_SILVER_URI);
-mongoose.connect(process.env.MONGOLAB_SILVER_URI);
+
+mongoose.connect('localhost:27017/selftaught');
 
 // If an incoming request uses
 // a protocol other than HTTPS,
@@ -68,7 +67,10 @@ app.use(function(req, res, next) {
 /**
  * Get port from environment and store in Express.
  */
-const port = process.env.PORT || 8080;
+// const port = process.env.PORT || 8080;
+// app.set('port', port);
+
+const port = process.env.PORT || 3000;
 app.set('port', port);
 
 /**
