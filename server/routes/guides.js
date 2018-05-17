@@ -5,7 +5,6 @@ var router = express.Router();
 var mongoose = require('mongoose');
 var jwt = require('jsonwebtoken');
 
-console.log('dis in guides');
 router.get('/', function(req, res, next) {
     console.log("getting guides!!");
     Guide.find()
