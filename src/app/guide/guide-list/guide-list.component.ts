@@ -20,7 +20,11 @@ export class GuideListComponent implements OnInit {
     this.guideService.getGuides()
             .subscribe(
                 (guides: Guide[]) => {
-                    this.guides = guides;
+                    if (guides.length !== 0) {
+                      this.guides = guides;
+                    } else {
+                      this.guides = null;
+                    }
                 }
             );
   }
