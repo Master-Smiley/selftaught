@@ -7,6 +7,7 @@ import { Observable } from 'rxjs/Rx';
 
 @Injectable()
 export class GuideService {
+    domain = 'http://edlink.io';
     private guides: Guide[] = [];
     constructor(private http: Http, private errorService: ErrorsService) {}
 
@@ -15,7 +16,7 @@ export class GuideService {
         const body = JSON.stringify(guide);
         const headers = new Headers({'Content-Type': 'application/json'});
         const token = localStorage.getItem('token') ? '?token=' + localStorage.getItem('token') : '';
-        return this.http.post('https://localhost:3000/create' + token, body, {headers: headers})
+        return this.http.post(this.domain + '/create' + token, body, {headers: headers})
             .map((response: Response) => {
                 response.json();
                 this.submissionSuccess = true;
@@ -27,7 +28,8 @@ export class GuideService {
     }
 
     getGuides() {
-        return this.http.get('https://localhost:3000/guides')
+        console.log("before getGuides Service");
+        return this.http.get(this.domain + '/guides')
             .map((response: Response) => {
                 const guides = response.json().obj;
                 const transformedGuides: Guide[] = [];
@@ -41,13 +43,15 @@ export class GuideService {
                 return transformedGuides;
             })
             .catch((error: Response) => {
+                console.log("catch in get guides");
+                console.log(error);
                 this.errorService.handleError(error.json());
                 return Observable.throw(error.json);
             });
     }
 
     getGuide(url: string) {
-        return this.http.get('https://localhost:3000' + url)
+        return this.http.get(this.domain + url)
             .map((response: Response) => {
                 const guide = response.json().obj;
                 console.log(guide);
@@ -56,7 +60,7 @@ export class GuideService {
     }
 
     getUserGuides(url: string) {
-        return this.http.get('localhost:3000' + url)
+        return this.http.get(this.domain + url)
             .map((response: Response) => {
                 const guides = response.json().obj;
                 const transformedGuides: Guide[] = [];
@@ -72,7 +76,7 @@ export class GuideService {
     }
 
     getUserUsername(url: string) {
-        return this.http.get('localhost:3000' + url)
+        return this.http.get(this.domain + url)
             .map((response: Response) => {
                 return response.json();
             });

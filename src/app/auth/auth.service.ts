@@ -9,14 +9,17 @@ import { jwt } from 'jsonwebtoken';
 
 @Injectable()
 export class AuthService {
+    domain = 'http://edlink.io';
     constructor(private http: Http, private errorService: ErrorsService) {}
 
     signup(user: User) {
         const body = JSON.stringify(user);
-        const headers = new Headers({'Content-Type': 'application/json'});
-        return this.http.post('https://localhost:3000/user/signup', body, {headers: headers})
+        const headers = new Headers({'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'});
+        return this.http.post(this.domain + '/user/signup', body, {headers: headers})
             .map((response: Response) => response.json())
             .catch((error: Response) => {
+                console.log("catch in signup");
+                console.log(error);
                 this.errorService.handleError(error.json());
                 return Observable.throw(error.json());
             });
@@ -26,7 +29,7 @@ export class AuthService {
     signin(user: User) {
         const body = JSON.stringify(user);
         const headers = new Headers({'Content-Type': 'application/json'});
-        return this.http.post('https://localhost:3000/user/login', body, {headers: headers})
+        return this.http.post(this.domain + '/user/login', body, {headers: headers})
             .map((response: Response) => response.json())
             .catch((error: Response) => {
                 this.errorService.handleError(error.json());
