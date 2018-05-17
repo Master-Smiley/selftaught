@@ -17,7 +17,7 @@ mongoose.Promise = global.Promise;
 
 mongoose.connect(uri, process.env.MONGOLAB_SILVER_URI);
 
-
+console.log('are you doing anything?');
 // Parsers for POST data
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
