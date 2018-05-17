@@ -25,7 +25,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // Point static path to dist
 app.use(express.static(path.join(__dirname, '/dist')));
 
-
+app.use(favicon(path.join(__dirname, 'dist', 'favicon.ico')));
 /**
  * Get port from environment and store in Express.
  */
