@@ -14,7 +14,7 @@ export class AuthService {
     signup(user: User) {
         const body = JSON.stringify(user);
         const headers = new Headers({'Content-Type': 'application/json'});
-        return this.http.post('https://www.edlink.io/user/signup', body, {headers: headers})
+        return this.http.post('https://www.mighty-escarpment-97466.herokuapp.com/user/signup', body, {headers: headers})
             .map((response: Response) => response.json())
             .catch((error: Response) => {
                 this.errorService.handleError(error.json());
@@ -26,7 +26,7 @@ export class AuthService {
     signin(user: User) {
         const body = JSON.stringify(user);
         const headers = new Headers({'Content-Type': 'application/json'});
-        return this.http.post('https://www.edlink.io/user/login', body, {headers: headers})
+        return this.http.post('https://www.mighty-escarpment-97466.herokuapp.com/user/login', body, {headers: headers})
             .map((response: Response) => response.json())
             .catch((error: Response) => {
                 this.errorService.handleError(error.json());
