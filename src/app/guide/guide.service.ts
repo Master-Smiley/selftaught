@@ -7,7 +7,7 @@ import { Observable } from 'rxjs/Rx';
 
 @Injectable()
 export class GuideService {
-    domain = 'http://edlink.io';
+    domain = 'http://www.mighty-escarpment-97466.herokuapp.com';
     private guides: Guide[] = [];
     constructor(private http: Http, private errorService: ErrorsService) {}
 
