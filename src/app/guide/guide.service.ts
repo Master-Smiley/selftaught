@@ -27,7 +27,7 @@ export class GuideService {
     }
 
     getGuides() {
-        return this.http.get('https://www.edlink.io/guides')
+        return this.http.get('https://www.mighty-escarpment-97466.herokuapp.com/guides')
             .map((response: Response) => {
                 const guides = response.json().obj;
                 const transformedGuides: Guide[] = [];
