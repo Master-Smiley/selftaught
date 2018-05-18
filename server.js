@@ -22,6 +22,14 @@ console.log('are you doing anything?');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
+// force ssl
+app.use(function(req, res, next) {
+    if ((req.get('X-Forwarded-Proto') !== 'https')) {
+        res.redirect('https://' + req.get('Host') + req.url);
+    } else
+        next();
+});
+
 // Point static path to dist
 app.use(express.static(path.join(__dirname, '/dist')));
 
