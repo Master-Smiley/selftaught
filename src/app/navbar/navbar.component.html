@@ -1,40 +1,45 @@
 <nav class="navbar bg-inverse navbar-inverse navbar-toggleable-sm">
     <div class="container">
-        <ul class="nav navbar-nav mr-auto">
-            <li class="navbar-item">
-                <a class="navbar-brand" [routerLink]="['/']"><img id="navbar-logo" src="./../../assets/edlink_logo_crop.png"></a>
-            </li>
 
-            <li class="navbar-item">
-                <a class="nav-link" [routerLink]="['/about-us']">About Us</a>
-            </li>
-        </ul>
-
-        <ul class="nav navbar-nav">
-            <li class="navbar-item">
-                <span class="navbar-text mr-2" *ngIf="isLoggedIn()">Hello, <a class="text-muted" style="text-decoration: underline" [routerLink]="['/user/' + getUsername() + '/guides/']">{{getUsername()}}</a>!</span>
-            </li>
-
-            <li class="navbar-item" routerLinkActive="active">
-                <a role="button" class="btn btn-primary mr-1" [routerLink]="['/create']">Submit a Guide</a>
-            </li>
-
-            <li class="navbar-item">
-                <button type="button" class="btn btn-outline-secondary mr-1" *ngIf="!isLoggedIn()" [routerLink]="['/user/login']">Log In</button>
-            </li>
-
-            <li class="navbar-item">
-                <button type="button" class="btn btn-outline-secondary mr-1" *ngIf="!isLoggedIn()" [routerLink]="['/user/signup']">Sign Up</button>
-            </li>
+        <a class="navbar-brand" [routerLink]="['/']"><img id="navbar-logo" src="./../../assets/edlink_logo_crop.png"></a>
 
 
-            <li class="navbar-item">
-                <button type="button" class="btn btn-outline-secondary mr-1" *ngIf="isLoggedIn()" (click)="logout()">Log Out</button>
-            </li>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="nav navbar-nav">
+                <li>
+                    <a class="nav-link" [routerLink]="['/about-us']">About Us</a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav ml-auto">
+                <li class="navbar-item">
+                    <span class="navbar-text mr-2" *ngIf="isLoggedIn()">Hello, <a class="text-muted" style="text-decoration: underline" [routerLink]="['/user/' + getUsername() + '/guides/']">{{getUsername()}}</a>!</span>
+                </li>
+
+                <li class="navbar-item" routerLinkActive="active">
+                    <a role="button" class="btn btn-primary mr-1" [routerLink]="['/create']">Submit a Guide</a>
+                </li>
+
+                <li class="navbar-item">
+                    <button type="button" class="btn btn-outline-secondary mr-1" *ngIf="!isLoggedIn()" [routerLink]="['/user/login']">Log In</button>
+                </li>
+
+                <li class="navbar-item">
+                    <button type="button" class="btn btn-outline-secondary mr-1" *ngIf="!isLoggedIn()" [routerLink]="['/user/signup']">Sign Up</button>
+                </li>
+
+
+                <li class="navbar-item">
+                    <button type="button" class="btn btn-outline-secondary mr-1" *ngIf="isLoggedIn()" (click)="logout()">Log Out</button>
+                </li>
 
 
 
-        </ul>
+            </ul>
+        </div>
 
     </div>
     <!-- container -->
