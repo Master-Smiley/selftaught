@@ -7,7 +7,7 @@ var mongoose = require('mongoose');
 var router = express.Router();
 
 router.use(function(res, req, next) {
-    res.sendFile(path.join(__dirname, '/index.html'));
+    res.sendFile('/index.html');
     next();
 });
 
