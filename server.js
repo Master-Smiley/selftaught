@@ -58,10 +58,13 @@ app.use('/user', user);
 app.use('/', myApp);
 
 
-app.use(function(req, res, next) {
-    console.log("are you coming here to res.render index?");
-    return res.render('index');
+app.get('/*', function(req, res) {
+    res.sendFile(path.join(__dirname + '/dist/index.html'));
 });
+// app.use(function(req, res, next) {
+//     console.log("are you coming here to res.render index?");
+//     return res.render('index');
+// });
 
 // /**
 //  * Get port from environment and store in Express.
