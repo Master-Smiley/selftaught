@@ -18,10 +18,8 @@ mongoose.Promise = global.Promise;
 mongoose.connect(process.env.MONGOLAB_SILVER_URI);
 
 // set view engine
-// view engine setup
 app.set('views', path.join(__dirname, 'views'));
-app.engine('html', require('ejs').renderFile);
-app.set('view engine', 'html');
+app.set('view engine', 'hbs');
 
 // force ssl
 app.use(function(req, res, next) {
