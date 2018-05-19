@@ -28,7 +28,6 @@ export class GuideService {
     }
 
     getGuides() {
-        console.log("before getGuides Service");
         return this.http.get(this.domain + '/guides')
             .map((response: Response) => {
                 const guides = response.json().obj;
@@ -43,7 +42,6 @@ export class GuideService {
                 return transformedGuides;
             })
             .catch((error: Response) => {
-                console.log("catch in get guides");
                 console.log(error);
                 this.errorService.handleError(error.json());
                 return Observable.throw(error.json);
