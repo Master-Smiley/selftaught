@@ -52,15 +52,20 @@ app.use(function(req, res, next) {
 
 
 // Set our api routes
-app.use('/create', create);
-app.use('/guides', guides);
-app.use('/user', user);
-app.use('/', myApp);
+function renderFunction() {
+    app.use('/*', function(req, res) {
+        return res.sendFile(path.join(__dirname, '/dist/index.html'));
+    });
+}
+
+app.use('/create', create, renderFunction());
+app.use('/guides', guides, renderFunction());
+app.use('/user', user, renderFunction());
+app.use('/', myApp, renderFunction());
+
+renderFunction();
 
 
-app.use('/*', function(req, res) {
-    return res.sendFile(path.join(__dirname, '/dist/index.html'));
-});
 // app.use(function(req, res, next) {
 //     console.log("are you coming here to res.render index?");
 //     return res.render('index');
