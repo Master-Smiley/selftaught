@@ -49,13 +49,13 @@ app.use(function(req, res, next) {
 app.use('/create', create);
 app.use('/guides', guides);
 app.use('/user', user);
-app.use('*', myApp);
+app.use('/', myApp);
 
 
-// app.use(function(req, res, next) {
-//     console.log("are you coming here to res.render index?");
-//     return api;
-// });
+app.use(function(req, res, next) {
+    console.log("are you coming here to res.render index?");
+    return res.get('/');
+});
 
 /**
  * Get port from environment and store in Express.
