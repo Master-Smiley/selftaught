@@ -4,6 +4,7 @@ const path = require('path');
 const http = require('http');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const cookieParser = require('cookie-parser');
 
 // Get our API routes
 const myApp = require('./server/routes/api');
@@ -22,10 +23,6 @@ app.set('views', path.join(__dirname, 'views'));
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
 
-// Parsers for POST data
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-
 // force ssl
 app.use(function(req, res, next) {
     if ((req.get('X-Forwarded-Proto') !== 'https')) {
@@ -34,8 +31,17 @@ app.use(function(req, res, next) {
         next();
 });
 
+// Parsers for POST data
+app.use(logger('dev'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cookieParser());
 // // Point static path to dist
 app.use(express.static(path.join(__dirname, '/dist')));
+
+
+
+
 
 /**
  * Get port from environment and store in Express.
