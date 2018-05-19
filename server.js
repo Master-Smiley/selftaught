@@ -14,7 +14,6 @@ const create = require('./server/routes/create');
 const app = express();
 mongoose.Promise = global.Promise;
 
-
 mongoose.connect(process.env.MONGOLAB_SILVER_URI);
 
 // set view engine
@@ -50,12 +49,12 @@ app.use(function(req, res, next) {
 app.use('/create', create);
 app.use('/guides', guides);
 app.use('/user', user);
-app.use('/*', api);
+app.use('/', api);
 
 
 app.use(function(req, res, next) {
     console.log("are you coming here to res.render index?");
-    return res.render('index');
+    return api;
 });
 
 /**
