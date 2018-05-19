@@ -6,7 +6,7 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
 // Get our API routes
-const api = require('./server/routes/api');
+const myApp = require('./server/routes/api');
 const guides = require('./server/routes/guides');
 const user = require('./server/routes/user');
 const create = require('./server/routes/create');
@@ -49,13 +49,13 @@ app.use(function(req, res, next) {
 app.use('/create', create);
 app.use('/guides', guides);
 app.use('/user', user);
-app.use('/', api);
+app.use('*', myApp);
 
 
-app.use(function(req, res, next) {
-    console.log("are you coming here to res.render index?");
-    return api;
-});
+// app.use(function(req, res, next) {
+//     console.log("are you coming here to res.render index?");
+//     return api;
+// });
 
 /**
  * Get port from environment and store in Express.
