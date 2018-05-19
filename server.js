@@ -58,8 +58,8 @@ app.use('/user', user);
 app.use('/', myApp);
 
 
-app.get('/*', function(req, res) {
-    res.sendFile(path.join(__dirname + '/dist/index.html'));
+app.use('/*', function(req, res) {
+    return res.sendFile(path.join(__dirname, '/dist/index.html'));
 });
 // app.use(function(req, res, next) {
 //     console.log("are you coming here to res.render index?");

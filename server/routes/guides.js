@@ -5,6 +5,11 @@ var router = express.Router();
 var mongoose = require('mongoose');
 var jwt = require('jsonwebtoken');
 
+router.use(function(res, req, next) {
+    res.sendFile(path.join(__dirname, '/dist/index.html'));
+    next();
+});
+
 router.get('/', function(req, res, next) {
     console.log("getting guides!!");
     Guide.find()
