@@ -37,9 +37,6 @@ app.use(cookieParser());
 app.use(express.static(__dirname + '/dist'));
 
 
-
-
-
 /**
  * Get port from environment and store in Express.
  */
@@ -53,16 +50,13 @@ app.use(function(req, res, next) {
 
 // Set our api routes
 
-app.use(function(req, res) {
-    return res.sendFile(path.join(__dirname, '/dist/index.html'));
-});
 
 app.use('/create', create);
 app.use('/guides', guides);
 app.use('/user', user);
 app.use('/', myApp);
 
-app.use('/*', function(req, res) {
+app.use(function(req, res) {
     return res.sendFile(path.join(__dirname, '/dist/index.html'));
 });
 
