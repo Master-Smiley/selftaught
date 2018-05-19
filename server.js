@@ -17,6 +17,8 @@ mongoose.Promise = global.Promise;
 
 mongoose.connect(process.env.MONGOLAB_SILVER_URI);
 
+//set up view engine
+app.set('view engine', 'hbs');
 
 // Parsers for POST data
 app.use(bodyParser.json());
@@ -53,7 +55,7 @@ app.use('/', api);
 
 app.use(function(req, res, next) {
     console.log("are you coming here to res.render index?");
-    return res.render('index.html');
+    return res.render('/src/index');
 });
 
 /**

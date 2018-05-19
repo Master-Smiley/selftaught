@@ -4,11 +4,8 @@ var path = require('path');
 
 /* GET api listing. */
 router.get('/', function(req, res, next) {
+    console.log('api route before res.render index');
     res.render('index');
-});
-
-router.post('/', function(req, res, next) {
-    console.log("I'm posting");
 });
 
 module.exports = router;
