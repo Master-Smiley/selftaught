@@ -48,7 +48,7 @@ app.use(function(req, res, next) {
 app.use('/create', create);
 app.use('/guides', guides);
 app.use('/user', user);
-// app.use('/', api);
+app.use('/', api);
 
 
 app.use(function(req, res, next) {

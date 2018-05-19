@@ -9,7 +9,7 @@ import { jwt } from 'jsonwebtoken';
 
 @Injectable()
 export class AuthService {
-    domain = 'https://mighty-escarpment-97466.herokuapp.com';
+    domain = 'https://edlink.io';
     constructor(private http: Http, private errorService: ErrorsService) {}
 
     signup(user: User) {
