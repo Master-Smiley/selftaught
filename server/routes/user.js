@@ -6,10 +6,6 @@ var User = require('../../models/user');
 var mongoose = require('mongoose');
 var router = express.Router();
 
-router.use(function(req, res, next) {
-    res.render('index');
-    next();
-});
 
 router.post('/signup', function(req, res, next) {
 
