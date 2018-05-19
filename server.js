@@ -18,6 +18,7 @@ mongoose.connect(process.env.MONGOLAB_SILVER_URI);
 
 // set view engine
 // view engine setup
+app.set('views', path.join(__dirname, 'views'));
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
 
@@ -33,7 +34,7 @@ app.use(function(req, res, next) {
         next();
 });
 
-// Point static path to dist
+// // Point static path to dist
 app.use(express.static(path.join(__dirname, '/dist')));
 
 /**
