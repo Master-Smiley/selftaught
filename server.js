@@ -17,8 +17,6 @@ mongoose.Promise = global.Promise;
 
 mongoose.connect(process.env.MONGOLAB_SILVER_URI);
 
-//set up view engine
-app.set('view engine', 'hbs');
 
 // Parsers for POST data
 app.use(bodyParser.json());
