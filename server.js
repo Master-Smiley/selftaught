@@ -17,7 +17,7 @@ mongoose.Promise = global.Promise;
 
 mongoose.connect(process.env.MONGOLAB_SILVER_URI);
 
-console.log('are you doing anything?');
+
 // Parsers for POST data
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -48,7 +48,8 @@ app.use(function(req, res, next) {
 app.use('/create', create);
 app.use('/guides', guides);
 app.use('/user', user);
-app.use('/', api);
+// app.use('/', api);
+
 
 app.use(function(req, res, next) {
     return res.render('index');

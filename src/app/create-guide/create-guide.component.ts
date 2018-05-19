@@ -28,7 +28,7 @@ export class CreateGuideComponent implements OnInit {
   }
   formatLinksGuide(array) {
     array.forEach(element => {
-      if (!element.resourceLink.includes('http://')) {
+      if ((!element.resourceLink.includes('http://')) || (!element.resourceLink.includes('https://'))) {
         element.resourceLink = 'http://' + element.resourceLink;
       }
     });
