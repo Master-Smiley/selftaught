@@ -52,6 +52,7 @@ app.use('/', api);
 
 
 app.use(function(req, res, next) {
+    console.log("are you coming here to res.render index?");
     return res.render('index');
 });
 
