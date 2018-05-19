@@ -50,14 +50,14 @@ app.use(function(req, res, next) {
 
 // Set our api routes
 
-app.use('/create', create);
-app.use('/guides', guides);
-app.use('/user', user);
-app.use('/*', myApp);
+app.use('/api/create', create);
+app.use('/api/guides', guides);
+app.use('/api/user', user);
+// app.use('/api', myApp);
 
-// app.use('/*', function(req, res) {
-//     return res.sendFile(path.join(__dirname, '/dist/index.html'));
-// });
+app.use('/*', function(req, res) {
+    return res.sendFile(path.join(__dirname, '/dist/index.html'));
+});
 
 
 // app.use(function(req, res, next) {
