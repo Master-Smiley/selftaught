@@ -28,7 +28,7 @@ export class CreateGuideComponent implements OnInit {
   }
   formatLinksGuide(array) {
     array.forEach(element => {
-      if ((!element.resourceLink.includes('http://')) || (!element.resourceLink.includes('https://'))) {
+      if ((!element.resourceLink.includes('http://')) && (!element.resourceLink.includes('https://'))) {
         element.resourceLink = 'http://' + element.resourceLink;
       }
     });
@@ -82,7 +82,7 @@ export class CreateGuideComponent implements OnInit {
 
   ngOnInit() {
     this.rform = this.fb.group({
-      title : [null, Validators.compose([Validators.required])],
+      title : [null, Validators.compose([Validators.required, Validators.pattern('^[a-z0-9]+$/i')])],
       description : [null, Validators.compose([Validators.required])],
       prereqs: [null, Validators.compose([Validators.required])],
       experienceLevel: [null, Validators.required],
