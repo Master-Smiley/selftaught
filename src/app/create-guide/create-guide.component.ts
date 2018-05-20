@@ -82,7 +82,7 @@ export class CreateGuideComponent implements OnInit {
 
   ngOnInit() {
     this.rform = this.fb.group({
-      title : [null, Validators.compose([Validators.required, Validators.pattern('/^[-_ a-zA-Z0-9]+$/')])],
+      title : [null, Validators.compose([Validators.required])], //I need to make sure they don't make illegal guide names
       description : [null, Validators.compose([Validators.required])],
       prereqs: [null, Validators.compose([Validators.required])],
       experienceLevel: [null, Validators.required],
