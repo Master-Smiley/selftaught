@@ -82,7 +82,7 @@ export class CreateGuideComponent implements OnInit {
 
   ngOnInit() {
     this.rform = this.fb.group({
-      title : [null, Validators.compose([Validators.required, Validators.pattern('^[a-z0-9]+$/i')])],
+      title : [null, Validators.compose([Validators.required, Validators.pattern('^[a-z\d\-_\s]+$/i')])],
       description : [null, Validators.compose([Validators.required])],
       prereqs: [null, Validators.compose([Validators.required])],
       experienceLevel: [null, Validators.required],
