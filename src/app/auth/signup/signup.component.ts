@@ -32,7 +32,7 @@ export class SignupComponent implements OnInit {
 
   createForm() {
       this.signupForm = this.formBuilder.group({
-      username: [null, Validators.required, Validators.pattern('[a-z\d\-_\s]+$')],
+      username: [null, Validators.required, Validators.pattern('[a-z\d\-_\s]')],
       email: [null, Validators.compose([Validators.required, CustomValidators.email])],
       password: [null, Validators.compose([Validators.required])],
       re_password:  [null, Validators.compose([Validators.required])]
