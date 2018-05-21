@@ -33,7 +33,7 @@ export class GuideService {
                 const guides = response.json().obj;
                 const transformedGuides: Guide[] = [];
                 for (const guide of guides) {
-                    transformedGuides.push(new Guide(
+                    transformedGuides.unshift(new Guide(
                         guide.title, guide.description, guide.prereqs,
                          guide.experience, guide.guideResources, guide.user, guide.username
                     ));
